@@ -2,6 +2,8 @@
 @import '../../assets/scss/mixins';
 
 .page {
+  width: 100%;
+
   @include margin-bottom(2);
 
   &__inner {
@@ -26,7 +28,7 @@
 
 @include breakpoint-sm {
   .page {
-    lost-column: 7/12;
+    lost-column: 12/12;
 
     &__inner {
       padding: 30px 20px;

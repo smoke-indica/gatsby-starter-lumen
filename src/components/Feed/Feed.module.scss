@@ -11,12 +11,15 @@
 
     &-title {
       font-size: $typographic-base-font-size * 1.6875;
+      margin-top: 15px;
+      margin-left: 15px;
+      margin-bottom: 0px;
       @include line-height(1.5);
       @include margin-top(0);
-      @include margin-bottom(.5);
+      @include margin-bottom(0);
 
       &-link {
-        color: $color-base;
+        color: green;
 
         &:hover,
         &:focus {
@@ -26,6 +29,19 @@
 
       }
 
+    }
+
+    &-content {
+      box-shadow: 2px 3px 3px 3px #8DB98A;
+      background-color: white;
+    }
+
+    &-p {
+      font-size: $typographic-base-font-size * 1.15;
+      margin-left: 15px;
+      margin-bottom: 15px;
+      margin-top: 0px;
+      padding-bottom: 10px;
     }
 
     &-description {

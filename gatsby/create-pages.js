@@ -40,6 +40,12 @@ const createPages = async ({ graphql, actions }) => {
             }
             fields {
               slug
+              images
+              author
+              net_votes
+              total_payout_value
+              pending_payout_value
+              tags
             }
           }
         }

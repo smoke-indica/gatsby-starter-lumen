@@ -20,14 +20,27 @@ const PageTemplate = ({ data }: Props) => {
   const { title: pageTitle, description: pageDescription, socialImage } = frontmatter;
   const metaDescription = pageDescription !== null ? pageDescription : siteSubtitle;
 
-  return (
-    <Layout title={`${pageTitle} - ${siteTitle}`} description={metaDescription} socialImage={socialImage} >
-      <Sidebar />
-      <Page title={pageTitle}>
-        <div dangerouslySetInnerHTML={{ __html: pageBody }} />
-      </Page>
-    </Layout>
-  );
+  if (pageTitle != 'Insights') {
+    return (
+      <Layout title={`${pageTitle} - ${siteTitle}`} description={metaDescription} socialImage={socialImage} >
+        <Sidebar />
+        <Page title={pageTitle}>
+          <div dangerouslySetInnerHTML={{ __html: pageBody }} />
+        </Page>
+      </Layout>
+    );
+  } else {
+    return (
+      <Layout title={`${pageTitle} - ${siteTitle}`} description={metaDescription} socialImage={socialImage} >
+        <Sidebar />
+        <Page title={pageTitle}>
+          TEST
+          <div dangerouslySetInnerHTML={{ __html: pageBody }} />
+        </Page>
+      </Layout>
+    );
+  }
+
 };
 
 export const query = graphql`
@@ -35,11 +48,17 @@ export const query = graphql`
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id
       html
+      fields {
+        images
+        author
+        net_votes
+        total_payout_value
+        pending_payout_value
+      }
       frontmatter {
         title
         date
-        description
-        socialImage
+        tags
       }
     }
   }

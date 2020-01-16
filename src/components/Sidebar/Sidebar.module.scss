@@ -7,11 +7,17 @@
         position: relative;
         padding: 25px 20px 0;
     }
+
+    &__innerMob {
+        position: relative;
+        padding: 0px 0px 0;
+        background-color: #343a40;
+    }
 }
 
 @include breakpoint-sm {
     .sidebar {
-        lost-column: 5/12;
+        lost-column: 12/12;
         &__inner {
             padding: 30px 20px 0;
             &:after {

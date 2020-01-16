@@ -1,43 +1,55 @@
 'use strict';
 
 module.exports = {
-  url: 'https://lumen.netlify.com',
+  url: 'https://smoke-indica.com',
   pathPrefix: '/',
-  title: 'Blog by John Doe',
-  subtitle: 'Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.',
-  copyright: '© All rights reserved.',
+  title: 'Smoke Indica - A curation trail of the highest quality decentralized cannabis content',
+  subtitle: 'Smoke Indica is [Smoke](https://smoke.io) curation trail comprised of high quality Cannabis articles on a variety of topics. New content is generated every day.',
+  copyright: 'MIT Licensed blog',
   disqusShortname: '',
-  postsPerPage: 4,
-  googleAnalyticsId: 'UA-73379983-2',
+  postsPerPage: 15,
+  googleAnalyticsId: 'UA-140211511-1',
   useKatex: false,
   menu: [
     {
-      label: 'Articles',
+      label: 'Curated Content',
       path: '/'
     },
     {
-      label: 'About me',
+      label: 'About',
       path: '/pages/about'
     },
     {
-      label: 'Contact me',
+      label: 'Contact',
       path: '/pages/contacts'
+    },
+    {
+      label: 'Related sites',
+      path: '/pages/related'
+    },
+    {
+      label: 'Smoke Insights',
+      path: '/pages/insights'
+    },
+    {
+      label: 'Smoke Explorers',
+      path: '/pages/explorers'
     }
   ],
   author: {
-    name: 'John Doe',
+    name: 'Smoke Indica',
     photo: '/photo.jpg',
-    bio: 'Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.',
+    bio: 'Smoke Indica is Smoke.io curation trail comprised of high quality Cannabis articles on a variety of topics. New content is generated every day.',
     contacts: {
       email: '',
-      facebook: '#',
-      telegram: '#',
-      twitter: '#',
-      github: '#',
+      facebook: '',
+      telegram: '',
+      twitter: '@smoke_indica',
+      github: 'smoke-indica',
       rss: '',
       vkontakte: '',
-      linkedin: '#',
-      instagram: '#',
+      linkedin: '',
+      instagram: '',
       line: '',
       gitlab: '',
       weibo: '',

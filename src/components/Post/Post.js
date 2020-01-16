@@ -5,6 +5,7 @@ import Author from './Author';
 import Comments from './Comments';
 import Content from './Content';
 import Meta from './Meta';
+import Sidebar from '../Sidebar';
 import Tags from './Tags';
 import styles from './Post.module.scss';
 import type { Node } from '../../types';
@@ -13,27 +14,35 @@ type Props = {
   post: Node
 };
 
+const h1Style = {
+  textAlign:'center',
+  marginTop:'15px'
+};
+
+const aStyle = {
+  fontWeight:'bold',
+  fontSize:'22px',
+  color:'white'
+};
+
 const Post = ({ post }: Props) => {
   const { html } = post;
-  const { tagSlugs, slug } = post.fields;
+  const { tagSlugs, slug, author, images } = post.fields;
   const { tags, title, date } = post.frontmatter;
 
   return (
     <div className={styles['post']}>
-      <Link className={styles['post__home-button']} to="/">All Articles</Link>
+      <a href="/" className={styles['post__home-button']}>Go back</a>
 
       <div className={styles['post__content']}>
-        <Content body={html} title={title} />
+      <Meta date={date} />
+        <Content body={html} title={title} imgsrc={images[0]} tags={tags} tagSlugs={tagSlugs} />
       </div>
 
       <div className={styles['post__footer']}>
-        <Meta date={date} />
-        {tags && tagSlugs && <Tags tags={tags} tagSlugs={tagSlugs} />}
-        <Author />
-      </div>
-
-      <div className={styles['post__comments']}>
-        <Comments postSlug={slug} postTitle={post.frontmatter.title} />
+        <h1 style={h1Style}>
+        <a style={aStyle} href={"https://smoke.io/@" + author + slug}>Want to comment on this post?<br/>Head on over to Smoke.io!</a>
+        </h1>
       </div>
     </div>
   );

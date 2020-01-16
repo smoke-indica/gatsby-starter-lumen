@@ -6,7 +6,8 @@
     display: inline-block;
     margin-bottom: 0;
     border-radius: 50%;
-    background-clip: padding-box
+    background-clip: padding-box;
+    float:left;
   }
 
   &__title {
@@ -16,8 +17,10 @@
     @include margin(.5, 0, .5, 0);
 
     &-link {
-      color: $color-base;
-
+      color: white;
+      vertical-align: middle;
+      padding-top: 10px;
+      padding-left: 10px;
       &:hover,
       &:focus {
         color: $color-base
@@ -28,7 +31,7 @@
   }
 
   &__subtitle {
-    color: $color-gray;
+    color: $color-base;
     @include line-height(1);
     @include margin-bottom(1)
   }

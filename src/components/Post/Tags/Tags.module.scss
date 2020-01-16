@@ -4,6 +4,8 @@
 .tags {
   @include margin-bottom(.5);
 
+  lost-center:800px;
+
   &__list {
     list-style: none;
     margin: 0 -10px;

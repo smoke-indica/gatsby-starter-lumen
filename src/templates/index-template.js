@@ -57,13 +57,17 @@ export const query = graphql`
         node {
           fields {
             slug
-            categorySlug
+            images
+            author
+            net_votes
+            total_payout_value
+            pending_payout_value
           }
           frontmatter {
             title
             date
             category
-            description
+            tags
           }
         }
       }

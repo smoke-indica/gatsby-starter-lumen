@@ -63,6 +63,12 @@ module.exports = {
               ...edge.node.frontmatter,
               description: edge.node.frontmatter.description,
               date: edge.node.frontmatter.date,
+              images: edge.node.fields.images,
+              author: edge.node.fields.author,
+              net_votes: edge.node.fields.net_votes,
+              tags: edge.node.frontmatter.tags,
+              total_payout_value: edge.node.fields.total_payout_value,
+              pending_payout_value: edge.node.fields.pending_payout_value,
               url: site.siteMetadata.site_url + edge.node.fields.slug,
               guid: site.siteMetadata.site_url + edge.node.fields.slug,
               custom_elements: [{ 'content:encoded': edge.node.html }]
@@ -71,7 +77,7 @@ module.exports = {
           query: `
               {
                 allMarkdownRemark(
-                  limit: 1000,
+                  limit: 2000,
                   sort: { order: DESC, fields: [frontmatter___date] },
                   filter: { frontmatter: { template: { eq: "post" }, draft: { ne: true } } }
                 ) {
@@ -80,13 +86,25 @@ module.exports = {
                       html
                       fields {
                         slug
+                        images
+                        author
+                        net_votes
+                        total_payout_value
+                        pending_payout_value
+                        author_page
+                        post_count
+                        witness_votes
+                        reputation
+                        profile_image
+                        about_author
+                        cover_image
                       }
                       frontmatter {
                         title
                         date
                         template
                         draft
-                        description
+                        tags
                       }
                     }
                   }
@@ -98,46 +116,44 @@ module.exports = {
         }]
       }
     },
+    `gatsby-plugin-sharp`,
     {
       resolve: 'gatsby-transformer-remark',
       options: {
+        gfm: true,
         plugins: [
-          'gatsby-remark-relative-images',
-          {
-            resolve: 'gatsby-remark-katex',
-            options: {
-              strict: 'ignore'
-            }
-          },
-          {
-            resolve: 'gatsby-remark-images',
-            options: {
-              maxWidth: 960,
-              withWebp: true,
-              ignoreFileExtensions: [],
-            }
-          },
+          //'gatsby-remark-relative-images',
+          /*
           {
             resolve: 'gatsby-remark-responsive-iframe',
             options: { wrapperStyle: 'margin-bottom: 1.0725rem' }
+          },*/
+          {
+            resolve: `gatsby-remark-images-anywhere`,
+            options: {
+              maxWidth: 650,
+              quality: 50,
+              loading: 'lazy',
+              linkImagesToOriginal: true
+            },
           },
           'gatsby-remark-autolink-headers',
           'gatsby-remark-prismjs',
-          'gatsby-remark-copy-linked-files',
           'gatsby-remark-smartypants',
-          'gatsby-remark-external-links'
+          'gatsby-remark-external-links',
         ]
       }
     },
     'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
+    //'gatsby-plugin-sharp',
+    /*
     'gatsby-plugin-netlify',
     {
       resolve: 'gatsby-plugin-netlify-cms',
       options: {
         modulePath: `${__dirname}/src/cms/index.js`,
       }
-    },
+    },*/
     {
       resolve: 'gatsby-plugin-google-gtag',
       options: {

@@ -19,8 +19,8 @@ const PostTemplate = ({ data }: Props) => {
   const metaDescription = postDescription !== null ? postDescription : siteSubtitle;
 
   return (
-    <Layout title={`${postTitle} - ${siteTitle}`} description={metaDescription} socialImage={socialImage} >
-      <Post post={data.markdownRemark} />
+    <Layout title={`${postTitle} - ${siteTitle}`} description={metaDescription} >
+      <Post post={(data.markdownRemark)} />
     </Layout>
   );
 };
@@ -33,13 +33,16 @@ export const query = graphql`
       fields {
         slug
         tagSlugs
+        images
+        author
+        net_votes
+        total_payout_value
+        pending_payout_value
       }
       frontmatter {
         date
-        description
-        tags
         title
-        socialImage
+        tags
       }
     }
   }
