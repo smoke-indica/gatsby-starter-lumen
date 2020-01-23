@@ -4,6 +4,13 @@
 .meta {
   &__date {
     font-style: italic;
+    margin-top: 5px;
   }
+
+  font-size: $typographic-small-font-size;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding-top: 5px;
 
 }

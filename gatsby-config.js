@@ -75,85 +75,77 @@ module.exports = {
             }))
           ),
           query: `
-              {
-                allMarkdownRemark(
-                  limit: 2000,
-                  sort: { order: DESC, fields: [frontmatter___date] },
-                  filter: { frontmatter: { template: { eq: "post" }, draft: { ne: true } } }
-                ) {
-                  edges {
-                    node {
-                      html
-                      fields {
-                        slug
-                        images
-                        author
-                        net_votes
-                        total_payout_value
-                        pending_payout_value
-                        author_page
-                        post_count
-                        witness_votes
-                        reputation
-                        profile_image
-                        about_author
-                        cover_image
-                      }
-                      frontmatter {
-                        title
-                        date
-                        template
-                        draft
-                        tags
-                      }
-                    }
-                  }
+          {
+            allMarkdownRemark(
+              limit: 2000,
+              sort: { order: DESC, fields: [frontmatter___date] },
+              filter: { frontmatter: { template: { eq: "post" }, draft: { ne: true } } }
+            ) {
+            edges {
+              node {
+                html
+                fields {
+                  slug
+                  images
+                  author
+                  net_votes
+                  total_payout_value
+                  pending_payout_value
+                }
+                frontmatter {
+                  title
+                  date
+                  template
+                  draft
+                  tags
+                  author_page
+                  post_count
+                  witness_votes
+                  reputation
+                  profile_image
+                  about_author
+                  cover_image
                 }
               }
+            }
+            }
+}
             `,
           output: '/rss.xml',
           title: siteConfig.title
         }]
       }
     },
-    `gatsby-plugin-sharp`,
+    'gatsby-plugin-sharp',
     {
       resolve: 'gatsby-transformer-remark',
       options: {
         gfm: true,
         plugins: [
-          //'gatsby-remark-relative-images',
-          /*
-          {
-            resolve: 'gatsby-remark-responsive-iframe',
-            options: { wrapperStyle: 'margin-bottom: 1.0725rem' }
-          },*/
-          {
-            resolve: `gatsby-remark-images-anywhere`,
+          /*{
+            resolve: 'gatsby-remark-images-anywhere',
             options: {
-              maxWidth: 650,
-              quality: 50,
+              maxWidth: 960,
+              quality: 75,
+              wrapperStyle: 'margin-bottom: 0.5rem;',
+              createMarkup: ({ src, srcSet }) => `<img src="//images.weserv.nl/?url=${src}&w=960&fit=inside&we&output=webp" srcSet="${srcSet}" class="externalIMG" />`,
               loading: 'lazy',
-              linkImagesToOriginal: true
+              sharpMethod: 'fixed'
             },
           },
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 590,
+            },
+          },*/
           'gatsby-remark-autolink-headers',
           'gatsby-remark-prismjs',
-          'gatsby-remark-smartypants',
-          'gatsby-remark-external-links',
+          'gatsby-remark-smartypants'
         ]
       }
     },
     'gatsby-transformer-sharp',
-    //'gatsby-plugin-sharp',
-    /*
-    'gatsby-plugin-netlify',
-    {
-      resolve: 'gatsby-plugin-netlify-cms',
-      options: {
-        modulePath: `${__dirname}/src/cms/index.js`,
-      }
-    },*/
     {
       resolve: 'gatsby-plugin-google-gtag',
       options: {

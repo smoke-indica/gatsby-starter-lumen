@@ -1,51 +1,50 @@
 // @flow strict
 import React from 'react';
+import { withPrefix } from 'gatsby';
+import {
+  isBrowser,
+  isMobile
+} from 'react-device-detect';
 import Author from './Author';
 import Contacts from './Contacts';
 import Copyright from './Copyright';
 import Menu from './Menu';
 import styles from './Sidebar.module.scss';
 import { useSiteMetadata } from '../../hooks';
-import { withPrefix } from 'gatsby';
-
-import {
-  isBrowser,
-  isMobile
-} from "react-device-detect";
 
 type Props = {
   isIndex?: boolean,
 };
 
 const spanCSS = {
-  color:'white',
-  verticalAlign:'middle',
-  paddingLeft:'10px'
-}
+  color: 'white',
+  verticalAlign: 'middle',
+  paddingLeft: '10px'
+};
 
 const imgCSS = {
-  float:'left'
-}
+  float: 'left'
+};
 
 const h1CSS = {
-  marginTop:'5px',
-  marginBottom:'0px'
-}
+  marginTop: '5px',
+  marginBottom: '0px'
+};
 
 const linkCSS = {
-  color:'white',
-  fontWeight:'bold'
-}
+  color: 'white',
+  fontWeight: 'bold'
+};
 
 const linkSpan = {
-  marginLeft:'-40px'
-}
+  marginLeft: '-40px'
+};
 
 const Sidebar = ({ isIndex }: Props) => {
   const { author, copyright, menu } = useSiteMetadata();
 
-    if (isBrowser) {
-      return (
+  if (isBrowser) {
+    return (
         <header>
           <div className={styles['sidebar']}>
             <div className={styles['sidebar__inner']}>
@@ -56,16 +55,16 @@ const Sidebar = ({ isIndex }: Props) => {
             </div>
           </div>
         </header>
-      );
-    } else {
-      return(
+    );
+  }
+  return (
         <header>
           <div className={styles['sidebar']}>
             <div className={styles['sidebar__innerMob']}>
               <h2 style={h1CSS}>
                 <a href="/">
                   <img
-                    src={withPrefix(author.photo)}
+                    src={"/photo.jpg"}
                     width="45"
                     height="45"
                     style={imgCSS}
@@ -79,8 +78,7 @@ const Sidebar = ({ isIndex }: Props) => {
             </div>
           </div>
         </header>
-      );
-    }
+  );
 };
 
 export default Sidebar;

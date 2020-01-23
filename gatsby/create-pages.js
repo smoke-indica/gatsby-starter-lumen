@@ -37,6 +37,7 @@ const createPages = async ({ graphql, actions }) => {
           node {
             frontmatter {
               template
+              author_page
             }
             fields {
               slug

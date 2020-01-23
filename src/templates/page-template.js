@@ -4,7 +4,7 @@ import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import Sidebar from '../components/Sidebar';
 import Page from '../components/Page';
-import { useSiteMetadata } from '../hooks';
+import { useSiteMetadata, authorDetails, fetchPosts } from '../hooks';
 import type { MarkdownRemark } from '../types';
 
 type Props = {
@@ -15,12 +15,16 @@ type Props = {
 
 const PageTemplate = ({ data }: Props) => {
   const { title: siteTitle, subtitle: siteSubtitle } = useSiteMetadata();
-  const { html: pageBody } = data.markdownRemark;
+  const { html: pageBody,  } = data.markdownRemark;
   const { frontmatter } = data.markdownRemark;
-  const { title: pageTitle, description: pageDescription, socialImage } = frontmatter;
+  const { title: pageTitle, description: pageDescription, socialImage, author_page: author_page } = frontmatter;
   const metaDescription = pageDescription !== null ? pageDescription : siteSubtitle;
 
-  if (pageTitle != 'Insights') {
+  const pageTitleNew = author_page
+                        ? `${pageTitle}'s profile page`
+                        : `${pageTitle}`;
+
+  if (data.markdownRemark.fields.template === 'post' || !author_page) { // normal page
     return (
       <Layout title={`${pageTitle} - ${siteTitle}`} description={metaDescription} socialImage={socialImage} >
         <Sidebar />
@@ -31,11 +35,10 @@ const PageTemplate = ({ data }: Props) => {
     );
   } else {
     return (
-      <Layout title={`${pageTitle} - ${siteTitle}`} description={metaDescription} socialImage={socialImage} >
+      <Layout title={pageTitleNew + ' - ' + siteTitle} description={metaDescription} socialImage={socialImage} >
         <Sidebar />
-        <Page title={pageTitle}>
-          TEST
-          <div dangerouslySetInnerHTML={{ __html: pageBody }} />
+        <Page title={pageTitleNew}>
+          <div />
         </Page>
       </Layout>
     );
@@ -49,7 +52,6 @@ export const query = graphql`
       id
       html
       fields {
-        images
         author
         net_votes
         total_payout_value
@@ -59,6 +61,7 @@ export const query = graphql`
         title
         date
         tags
+        author_page
       }
     }
   }

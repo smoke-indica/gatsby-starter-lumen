@@ -30,15 +30,10 @@ const onCreateNode = ({ node, actions, getNode }) => {
       createNodeField({ node, name: 'tags', value: tags });
     }
 
-    /*
-    if (node.frontmatter.category) {
-      const categorySlug = `/category/${_.kebabCase(node.frontmatter.category)}/`;
-      createNodeField({ node, name: 'categorySlug', value: categorySlug });
-    }
-    */
-
     if (node.frontmatter.images) {
       createNodeField({ node, name: 'images', value: node.frontmatter.images });
+    } else {
+      createNodeField({ node, name: 'images', value: [''] });
     }
 
     if (node.frontmatter.author) {
@@ -47,6 +42,10 @@ const onCreateNode = ({ node, actions, getNode }) => {
 
     if (node.frontmatter.net_votes) {
       createNodeField({ node, name: 'net_votes', value: node.frontmatter.net_votes });
+    }
+
+    if (node.frontmatter.author_page) {
+      createNodeField({ node, name: 'author_page', value: node.frontmatter.author_page });
     }
 
     if (node.frontmatter.total_payout_value) {

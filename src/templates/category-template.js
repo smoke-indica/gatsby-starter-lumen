@@ -57,7 +57,6 @@ export const query = graphql`
         node {
           fields {
             slug
-            images
             author
             net_votes
             total_payout_value
