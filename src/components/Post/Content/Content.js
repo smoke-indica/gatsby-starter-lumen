@@ -74,7 +74,7 @@ const Content = ({
     <img src={"https://images.weserv.nl/?url=" + imgsrc + "&w=960&output=webp"} style={imgCSS} alt="main image"/>
     <h1 style={titleCSS}>{title}</h1>
     <h2 style={subtitleCSS}>
-      By <a href={`/${author}`}>@{author}</a> on {moment(date).format('D MMM YYYY')}.<br/>
+      By <a href={`https://smoke.io/@${author}`}>@{author}</a> on {moment(date).format('D MMM YYYY')}.<br/>
       Tags: {tags.map((tag) => <a href={`/tag/${tag}`} style={{ color: 'green' }}>{`${tag}, `}</a>)}<br/>
       {netVotes} users rewarded @{author} {parseInt((totalPayoutValue).replace(' SMOKE', ''), 10) + parseInt((pendingPayoutValue).replace(' SMOKE', ''), 10)} Smoke for this post.<br/>
       <a href={`https://smoke.io/@${author}${postSlug}`}>Read on smoke.io</a>, <a href={`https://twitter.com/intent/tweet?url=https://smoke-indica.com/${author}/&text=${title} - ${author}&hashtags=${tags.join(',')}`}>Share on Twitter</a>, <a href={`https://reddit.com/submit?url=https://smoke-indica.com/${author}/&title=${title} - ${author} - ${tags.join(', ')}`}>Submit to Reddit</a>

@@ -61,23 +61,23 @@ module.exports = {
           serialize: ({ query: { site, allMarkdownRemark } }) => (
             allMarkdownRemark.edges.map((edge) => ({
               ...edge.node.frontmatter,
-              description: edge.node.frontmatter.description,
+              //description: edge.node.frontmatter.description,
               date: edge.node.frontmatter.date,
-              images: edge.node.fields.images,
+              //images: edge.node.fields.images,
               author: edge.node.fields.author,
               net_votes: edge.node.fields.net_votes,
               tags: edge.node.frontmatter.tags,
-              total_payout_value: edge.node.fields.total_payout_value,
-              pending_payout_value: edge.node.fields.pending_payout_value,
+              //total_payout_value: edge.node.fields.total_payout_value,
+              //pending_payout_value: edge.node.fields.pending_payout_value,
               url: site.siteMetadata.site_url + edge.node.fields.slug,
               guid: site.siteMetadata.site_url + edge.node.fields.slug,
-              custom_elements: [{ 'content:encoded': edge.node.html }]
+              //custom_elements: [{ 'content:encoded': edge.node.html }]
             }))
           ),
           query: `
           {
             allMarkdownRemark(
-              limit: 2000,
+              limit: 100,
               sort: { order: DESC, fields: [frontmatter___date] },
               filter: { frontmatter: { template: { eq: "post" }, draft: { ne: true } } }
             ) {
@@ -154,7 +154,25 @@ module.exports = {
           head: true,
         },
       },
-    },
+    },/*
+    {
+      resolve: "gatsby-plugin-guess-js",
+      options: {
+        // Find the view id in the GA admin in a section labeled "views"
+        GAViewID: `VIEW_ID`,
+        // Add a JWT to get data from GA
+        jwt: {
+          client_email: `GOOGLE_SERVICE_ACCOUNT_EMAIL`,
+          private_key: `GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY`,
+        },
+        minimumThreshold: 0.03,
+        // The "period" for fetching analytic data.
+        period: {
+          startDate: new Date("2019-1-1"),
+          endDate: new Date(),
+        },
+      },
+    },*/
     {
       resolve: 'gatsby-plugin-sitemap',
       options: {

@@ -1,5 +1,7 @@
 node_modules/
 .cache/
+content/
+content/pages/
 public/
 npm-debug.log
 .eslintcache

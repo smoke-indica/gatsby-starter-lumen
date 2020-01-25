@@ -75,26 +75,60 @@ function generateLiElements(currentKeyPosts) {
   const titleArrayTags = [];
   const aElements = [];
 
+  const trDivLost = {
+    'width': '100%',
+    'marginBottom': '5px'
+  }
+
+  const tdIMG = {
+    'width': '25%',
+    'borderBottom': '1px dotted grey'
+  }
+
+  const tdTXT = {
+    'width': '75%',
+    'borderBottom': '1px dashed grey'
+  }
+
   for (let i = 0; i < 6; i++) {
     // const rnd = Math.floor(Math.random() * currentKeyPosts.length) + 1;
     currentKeyPosts.forEach((item) => {
       const current_item = item.node.frontmatter;
+      const current_fields = item.node.fields;
       if (
         !displayedPostPermalinks.includes(item.node.fields.slug)
         && !titleArrayTags.includes(current_item.title)
       ) {
         displayedPostPermalinks.push(item.node.fields.slug);
         titleArrayTags.push(current_item.title);
-        if (current_item.images) {
+        if (current_fields.images) {
           aElements.push(
-            <div style={tagDivLost}><a href={item.node.fields.slug}>
-              <img src={`//images.weserv.nl/?url=${(current_item.images)[0]}&w=95&h=95&output=webp`} alt={current_item.title} title={current_item.title} style={imgStyle} />
-              <span style={spanLost}>{current_item.title}<br/>By @{current_item.author}</span>
-            </a></div>
+            <tr style={trDivLost}>
+              <td style={tdIMG}>
+                <a href={item.node.fields.slug}>
+                  <img src={`//images.weserv.nl/?url=${(current_fields.images)[0]}&w=100&output=webp`} alt={current_item.title} title={current_item.title} style={imgStyle} />
+                </a>
+              </td>
+              <td style={tdTXT}>
+                <a href={item.node.fields.slug}>
+                  <span style={{'fontWeight': 'bold'}}>{current_item.title}</span><br/><span style={{'color': 'grey'}}>By @{current_item.author}</span>
+                </a>
+              </td>
+            </tr>
           );
         } else {
           aElements.push(
-            <div style={tagDivLost}><a href={current_item.permalink}>{current_item.title}</a></div>
+            <tr style={trDivLost}>
+              <td style={tdIMG}>
+                <img src={'/photo.jpg'} alt={current_item.title} title={current_item.title} style={imgStyle} />
+              </td>
+              <td style={tdTXT}>
+                <a href={item.node.fields.slug}>
+                  {current_item.title}<br/>By @{current_item.author}
+                </a>
+              </td>
+              <br/>
+            </tr>
           );
         }
       }
@@ -125,9 +159,9 @@ function tagElement(contentTagPosts) {
     let selectedPosts = shuffled.slice(0, n_elements);
 
     response.push(
-      <div style={tagDivStyle}>
+      <table style={tagDivStyle}>
         {generateLiElements(selectedPosts)}
-      </div>
+      </table>
     );
   });
   return response;
@@ -143,6 +177,7 @@ const tagDivStyle = {
   paddingRight: '10px',
   marginRight: '10px',
   height: '100%',
+  width: '100%'
 };
 
 const sectionStyle = {

@@ -66,6 +66,7 @@ export const query = graphql`
             author
             net_votes
             total_payout_value
+            images
             pending_payout_value
           }
           frontmatter {

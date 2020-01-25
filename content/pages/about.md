@@ -1,13 +1,36 @@
 ---
-title: "About me"
+title: "About"
 template: "page"
-socialImage: "/media/image-2.jpg"
+tags:
+images:
+author:
+net_votes:
+description: ""
+draft: false
+category: ""
+total_payout_value:
+pending_payout_value:
+date:
 ---
+## About Smoke
 
-Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.
+[Smoke.io](https://smoke.io) is a decentralized Cannabis social network which operates on top of the Smoke blockchain.
 
-![Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi.](/media/image-2.jpg)
+Smoke users can reward one another influence tokens (smoke power) which give you more control over post payouts and allow you to earn on curation rewards.
 
-*Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi.*
+Smoke was forked from the [Steem](https://steemit.com/) codebase and innovated upon to create a decentralized safe haven for Cannabis consumers, reviewers, patients, etc from the ever increasing hostilities centralized social media has imposed on Cannabis communities in recent years.
 
-Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus
+SMOKE is tradeable and can be transferred anywhere at anytime.
+
+SMOKE can be converted to SMOKE POWER in a process called powering up.
+
+SMOKE is mainly traded on the Bitshares DEX through the RUDEX.SMOKE gateway token.
+
+
+## About Smoke-Indica
+
+Smoke Indica is a [Smoke.io](https://smoke.io) curation trail created by [@Indica](https://smoke.io/@indica) which regularly features original high quality Cannabis content.
+
+New content is generated every day by users on the Smoke network, so check back here for the best of it.
+
+Featured authors have earned Smoke influence tokens for their content, you can too when you post original cannabis content on [Smoke.io](https://smoke.io).

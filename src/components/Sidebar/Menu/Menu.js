@@ -10,6 +10,20 @@ type Props = {
   }[]
 };
 
+const buttonCSS = {
+  'background-color': '#4CAF50',
+  'border': 'none',
+  'color': 'white',
+  'padding': '10px',
+  'textAlign': 'center',
+  'textDecoration': 'none',
+  'display': 'inline-block',
+  'fontSize': '16px',
+  'margin': '4px 2px',
+  'borderRadius': '2px',
+  'boxShadow': '2px 2px 2px 2px #8DB98A'
+}
+
 const Menu = ({ menu }: Props) => (
   <nav className={styles['menu']}>
     <ul className={styles['menu__list']}>
@@ -20,7 +34,9 @@ const Menu = ({ menu }: Props) => (
             className={styles['menu__list-item-link']}
             activeClassName={styles['menu__list-item-link--active']}
           >
-            {item.label}
+            <button style={buttonCSS}>
+              {item.label}
+            </button>
           </Link>
         </li>
       ))}

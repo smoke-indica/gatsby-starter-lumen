@@ -57,6 +57,7 @@ function mostRewardedAuthors (postResults) {
         response.push(<span style={h2Style}>{i+1 + " "}</span>)
       }
       response.push(<a href={"/" + sorted_author} style={aCSS}>{sorted_author.toUpperCase()}</a>);
+      response.push(<a href={"https://smoke.io/@" + sorted_author} style={{'float':'right'}}>🏠</a>);
       response.push(<span style={spanCSS}> {authors[sorted_author]} SMOKE</span>);
       response.push(<br/>);
     }
@@ -87,6 +88,7 @@ function mostFeaturedAuthors (postResults) {
         response.push(<span style={h2Style}>{i+1 + " "}</span>)
       }
       response.push(<a href={"/" + sorted_author} style={aCSS}>{sorted_author.toUpperCase()}</a>);
+      response.push(<a href={"https://smoke.io/@" + sorted_author} style={{'float':'right'}}>🏠</a>);
       response.push(<span style={spanCSS}> {authors[sorted_author]} posts</span>);
       response.push(<br/>);
     }
@@ -251,7 +253,6 @@ const Page = ({ title, children }: Props) => {
     pageRef.current.scrollIntoView();
   });
 
-  const authorCheck = title && title.includes('profile page');
   const postResults = fetchPosts();
 
   if (title && title === 'Insights') {
@@ -274,26 +275,26 @@ const Page = ({ title, children }: Props) => {
           { title && <h1 className={styles['page__title']}>{title}</h1>}
           <div className={styles['page__body']}>
             <div style={spanStyle}>
-              <h2 style={h2Style}>Most rewarded authors</h2>
-              {mostRewardedAuthorsRes}
-            </div>
-            <div style={spanStyle}>
-              <h2 style={h2Style}>Most featured authors</h2>
-              {mostFeaturedAuthorsRes}
+              <h2 style={h2Style}>Historical tag usage</h2>
+              {historicalTagsRes}
             </div>
             <div style={spanStyle}>
               <h2 style={h2Style}>Trending tags</h2>
               {trendingTagsRes}
             </div>
             <div style={spanStyle}>
-              <h2 style={h2Style}>Historical tag usage</h2>
-              {historicalTagsRes}
+              <h2 style={h2Style}>Most featured authors</h2>
+              {mostFeaturedAuthorsRes}
+            </div>
+            <div style={spanStyle}>
+              <h2 style={h2Style}>Most rewarded authors</h2>
+              {mostRewardedAuthorsRes}
             </div>
           </div>
         </div>
       </div>
     );
-  } else if (authorCheck) {
+  } else if (title && title.includes('profile page')) {
     const authorContents = authorDetails();
     const authorName = title.split("'")[0];
     let authorResult = getAuthor(authorContents, authorName);
